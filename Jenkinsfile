@@ -2,7 +2,7 @@ pipeline {
  
     environment {
         registry = "raideepu/nodejs_test_docker_kubernetes"
-    registryCredential = ‘dockerhub’
+    registryCredential = 'dockerhub'
     }
  
  
