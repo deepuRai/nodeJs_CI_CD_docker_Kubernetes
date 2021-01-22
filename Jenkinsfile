@@ -1,11 +1,10 @@
 pipeline {
  
     environment {
-        dockerregistry = 'https://registry.hub.docker.com'
-        dockerhuburl = "https://hub.docker.com/repository/docker/raideepu/nodejs_test_docker_kubernetes/"
-        githuburl = "https://github.com/deepuRai/nodeJs_CI_CD_docker_Kubernetes"
-        dockerhubcrd = 'dockerhub'
+        registry = "raideepu/nodejs_test_docker_kubernetes"
+    registryCredential = ‘dockerhub’
     }
+ 
  
     agent any
  
@@ -34,9 +33,9 @@ pipeline {
  
         stage('Build image') {
           steps{
-            script {
-              dockerImage = docker.build(dockerhuburl + ":$BUILD_NUMBER")
-            }
+            script  {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
           }
         }
  
