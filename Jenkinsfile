@@ -2,8 +2,8 @@ pipeline {
  
     environment {
         dockerregistry = 'https://registry.hub.docker.com'
-        dockerhuburl = "raideepu/nodejs_test_docker_kubernetes/"
-        githuburl = "deepuRai/nodeJs_CI_CD_docker_Kubernetes"
+        dockerhuburl = "https://hub.docker.com/repository/docker/raideepu/nodejs_test_docker_kubernetes/"
+        githuburl = "https://github.com/deepuRai/nodeJs_CI_CD_docker_Kubernetes"
         dockerhubcrd = 'dockerhub'
     }
  
