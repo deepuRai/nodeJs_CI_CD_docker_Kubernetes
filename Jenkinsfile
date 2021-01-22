@@ -39,27 +39,8 @@ pipeline {
           }
         }
  
-        stage('Test image') {
-            steps {
-                sh 'docker run -i ' + dockerhuburl + ':$BUILD_NUMBER npm test'
-            }
-        }
+        
  
-        stage('Deploy image') {
-          steps{
-            script {
-              docker.withRegistry(dockerregistry, dockerhubcrd ) {
-                dockerImage.push("${env.BUILD_NUMBER}")
-                dockerImage.push("latest")
-              }
-            }
-          }
-        }
- 
-        stage('Remove image') {
-          steps{
-            sh "docker rmi $dockerhuburl:$BUILD_NUMBER"
-          }
-        }
+        
     }
 }
