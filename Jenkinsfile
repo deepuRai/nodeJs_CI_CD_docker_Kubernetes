@@ -2,6 +2,7 @@ pipeline {
  
     environment {
         registry = "raideepu/nodejs_test_docker_kubernetes"
+        dockerregistry = 'https://registry.hub.docker.com'
     registryCredential = 'dockerhub'
     }
  
@@ -41,8 +42,9 @@ pipeline {
  
         stage('Deploy Image') {
   steps{    script {
-      docker.withRegistry( '', registryCredential ) {
-        dockerImage.push()
+      docker.withRegistry( dockerregistry, registryCredential ) {
+        dockerImage.push("${env.BUILD_NUMBER}")
+        dockerImage.push("latest")
       }
     }
   }
